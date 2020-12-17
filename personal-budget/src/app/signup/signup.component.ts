@@ -1,6 +1,7 @@
 import { getParseErrors } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { UserdetailsService } from '../userdetails.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'pb-signup',
@@ -12,7 +13,8 @@ export class SignupComponent implements OnInit {
   public password:string="";
   public confirm_password:string = "";
 
-  constructor(private userservice:UserdetailsService) { }
+  constructor(private userservice:UserdetailsService,
+    private _router:Router){ }
 
 
   ngOnInit(): void {
@@ -31,11 +33,14 @@ export class SignupComponent implements OnInit {
       user_obj.email=this.email;
       user_obj.password = this.password;
       console.log(user_obj)
-      this.userservice.post_userdetails(user_obj).subscribe((response:any)=>{
-        console.log(response)
-      });
+      this.userservice.post_userdetails(user_obj).subscribe( res => {
+        localStorage.setItem('token', res.token)
+        this._router.navigate(['/login'])
+      },
+      err => console.log(err));
     }
 
   }
 
 }
+

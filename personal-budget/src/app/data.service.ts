@@ -17,7 +17,7 @@ getData(): Observable<any> {
   if (this.DataObservable) {
     return this.DataObservable;
   } else {
-    this.DataObservable = this.http.get('http://localhost:3000/budget').pipe(shareReplay());
+    this.DataObservable = this.http.get('http://localhost:1234/budget').pipe(shareReplay());
     return this.DataObservable;
   }
 }

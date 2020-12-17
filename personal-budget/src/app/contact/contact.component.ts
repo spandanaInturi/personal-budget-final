@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserdetailsService } from '../userdetails.service'
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'pb-contact',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userservice:UserdetailsService,private _router:Router) { }
+  specialEvents = []
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.userservice.event().subscribe(res=> this.specialEvents = res,
+      res=>{
+        if (res){
+           this._router.navigate (['/contact'])
+        }
+      }
+
+  )
+
   }
+
 
 }

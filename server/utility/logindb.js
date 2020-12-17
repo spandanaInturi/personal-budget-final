@@ -5,7 +5,16 @@ var Login = require("../models/login")
 
 module.exports.addUserToTable= function(data){
     Login.insertMany(data,function(err,docs){
-        if (err) throw err;
+
+        if (err){
+            throw err;
+        }
+        else{
+        var id = Login.find({"username":data});
+        console.log(id);
+        return id[0];
+        }
+        
 
     });
 }

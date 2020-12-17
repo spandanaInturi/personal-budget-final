@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,11 @@ import { ContactComponent } from './contact/contact.component';
 import { D3graphComponent } from './d3graph/d3graph.component';
 import { DataService } from './data.service';
 import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './auth.guard';
+import { UserdetailsService } from './userdetails.service';
+import { TokenInterceptorService } from './token-interceptor.service';
+
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,11 @@ import { SignupComponent } from './signup/signup.component';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [DataService],
+  providers: [DataService,UserdetailsService,AuthGuard,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

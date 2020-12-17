@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserdetailsService } from '../userdetails.service'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'pb-menu',
