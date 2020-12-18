@@ -8,6 +8,7 @@ import { ContactComponent } from './contact/contact.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
 import {BarchartComponent} from './barchart/barchart.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -31,11 +32,17 @@ const routes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
-    //canActivate: [AuthGuard]
+
   },
   {
     path: 'signup',
     component: SignupComponent
+  },
+
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
 
   {

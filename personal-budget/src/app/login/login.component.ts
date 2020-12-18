@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       console.log(user_obj)
       this.userservice.get_userdetails(user_obj).subscribe((response:any)=>{
         localStorage.setItem('token', response.token)
-        this._router.navigate([''])
+        this._router.navigate(['/dashboard'])
       });
 
     }

@@ -69,7 +69,12 @@ else{
 })
 })
 
-app.post('/search',(req,res)=>{
+app.get('/dashboard',verifyToken,(req,res)=>{
+  console.log("entered dashboard")
+  res.json(true)
+})
+
+app.post('/login',(req,res)=>{
   console.log("hello entered to search");
   value = req.body.email
 
@@ -94,10 +99,7 @@ app.post('/search',(req,res)=>{
   })
 })
 
-app.get('/event',verifyToken,(req,res)=>{
-  res.json(true)
 
-})
   
 const data = require('./budgetdetails.json');
 

@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
       console.log(user_obj)
       this.userservice.post_userdetails(user_obj).subscribe( res => {
         localStorage.setItem('token', res.token)
-        this._router.navigate(['/login'])
+        this._router.navigate(['/dashboard'])
       },
       err => console.log(err));
     }

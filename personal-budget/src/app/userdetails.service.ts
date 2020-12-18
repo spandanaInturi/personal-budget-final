@@ -9,8 +9,8 @@ import { Router } from '@angular/router'
 })
 export class UserdetailsService {
   public register_url:string= "http://localhost:1234/signup";
-  public login_url:string= "http://localhost:1234/search";
-  public event_url:string= "http://localhost:1234/event";
+  public login_url:string= "http://localhost:1234/login";
+  public dashboard_url:string= "http://localhost:1234/dashboard";
 
   constructor(private httpobject:HttpClient,private _router:Router) { }
 
@@ -24,6 +24,10 @@ export class UserdetailsService {
     return this.httpobject.post(this.register_url,user)
   }
 
+  public dashboard(){
+    return this.httpobject.get<any>(this.dashboard_url)
+  }
+
   public loggedIn()
   {
     return !!localStorage.getItem('token')
@@ -33,13 +37,11 @@ export class UserdetailsService {
     return localStorage.getItem('token')
   }
 
-  public logoutUser() {
+  public logout() {
     localStorage.removeItem('token')
     this._router.navigate([''])
   }
-  public event(){
-    return this.httpobject.get<any>(this.event_url)
-  }
+
 }
 
 
