@@ -7,6 +7,7 @@ const app= express();
 const mongoose = require('mongoose');
 var Login = require("./models/login")
 const bcrypt = require('bcrypt');
+const budgetModel = require('./models/budget')
 var dbconnections = require('./utility/logindb');
 
 app.use(cors(corsOptions));
@@ -17,7 +18,7 @@ var corsOptions = {
 
 //connecting
 
-mongoose.connect('mongodb://localhost/spandana',function(err,db){
+mongoose.connect('mongodb+srv://Spandana14:Spandana14@budget.e47tz.mongodb.net/personal_budget?retryWrites=true&w=majority',function(err,db){
   if (err) throw err;
   console.log("connected to database",db.name)
 })
@@ -25,7 +26,9 @@ mongoose.connect('mongodb://localhost/spandana',function(err,db){
 app.use(bodyParser.json())
 
 
+
 function verifyToken(req, res, next) {
+  console.log(req.body);
   if(!req.headers.authorization) {
     return res.status(401).send('Unauthorized request')
   }
@@ -46,8 +49,10 @@ app.post('/signup',(req,res)=>{
 
   Login.findOne({"username":req.body.email},(err,user)=> {
     console.log("user information",user)
+    
     if (!user){
   user = new Login({
+    
     username: req.body.email,
     password: hash
 });
@@ -69,10 +74,45 @@ else{
 })
 })
 
-app.get('/dashboard',verifyToken,(req,res)=>{
-  console.log("entered dashboard")
-  res.json(true)
+app.post('/budget_details',(req,res)=>{
+  console.log("budget_details")
+  console.log(req.body);    
+  
+  budgetModel.findOne({"username":req.body.username},(err,user)=> {
+    console.log("user information",user)
+  if(user){
+    if(user.title==req.body.title){
+      return res.status(400).send('That expense already exists!');
+  }
+  }else{
+  budget = new budgetModel({
+    username: req.body.username,
+      title: req.body.title,
+      budget: req.body.budget,
+      maxbudget: req.body.maxbudget,
+      color: req.body.color        
+  });
+  console.log(budget)
+  budget.save();
+  res.send(budget);
+}
 })
+  })
+
+
+app.post('/dashboard',verifyToken,async(req,res)=>{
+  console.log("useremail",req.body)
+
+  console.log("entered dashboard")
+  budgetModel.findOne({"username":req.body.user},(err,user)=> {
+    console.log("user information",user)
+  if(user){
+     res.json(user)
+  }
+})
+  
+})
+
 
 app.post('/login',(req,res)=>{
   console.log("hello entered to search");
