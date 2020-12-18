@@ -20,6 +20,9 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
 import { UserdetailsService } from './userdetails.service';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { BarchartComponent } from './barchart/barchart.component';
+import { ChartsModule } from 'ng2-charts';
+import { DashboardComponent } from './dashboard/dashboard.component'
 
 
 
@@ -37,13 +40,16 @@ import { TokenInterceptorService } from './token-interceptor.service';
     BreadcrumbsComponent,
     ContactComponent,
     D3graphComponent,
-    SignupComponent
+    SignupComponent,
+    BarchartComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
   providers: [DataService,UserdetailsService,AuthGuard,{
     provide: HTTP_INTERCEPTORS,

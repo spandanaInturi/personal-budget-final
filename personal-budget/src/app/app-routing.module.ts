@@ -7,6 +7,7 @@ import { P404Component } from './p404/p404.component';
 import { ContactComponent } from './contact/contact.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
+import {BarchartComponent} from './barchart/barchart.component'
 
 
 const routes: Routes = [

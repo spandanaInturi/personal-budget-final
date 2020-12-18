@@ -50,7 +50,10 @@ constructor(private http: HttpClient, public dataService: DataService) { }
         type: 'pie',
         data : this.dataSource
     });
+
+
 }
+
 
 
 }
