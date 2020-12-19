@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
     else{
       this.userservice.add_budget(budget_details).subscribe((data:any)=>{
         //this._router.navigate(['/barchart'])
-        this._router.navigate(['/dashboard'])
+        this._router.navigate(['/about'])
       });
 
 

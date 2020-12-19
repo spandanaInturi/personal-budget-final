@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Chart } from 'chart.js';
-import * as D3 from 'd3';
 import { DataService } from '../data.service';
 
 
@@ -12,7 +10,7 @@ import { DataService } from '../data.service';
 })
 export class HomepageComponent implements OnInit {
 
-  public dataSource = {
+  /*public dataSource = {
     datasets : [ {
         data: [],
         backgroundColor: [
@@ -27,34 +25,34 @@ export class HomepageComponent implements OnInit {
     }],
     labels: []
 
-};
+};*/
 
 constructor(private http: HttpClient, public dataService: DataService) { }
 
   ngOnInit(): void {
 
 
-    this.dataService.getData().subscribe((data: any) => {
+   /* this.dataService.getData().subscribe((data: any) => {
       for (let i = 0; i < data.length; i++) {
         this.dataSource.datasets[0].data[i] = data[i].budget;
         this.dataSource.labels[i] = data[i].title;
         this.createChart();
       }
-    });
+    });*/
 
   }
 
-  createChart(){
+  /*createChart(){
     var ctx : any = document.getElementById('myChart')
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data : this.dataSource
-    });
+    });*/
 
 
 }
 
 
 
-}
+
 

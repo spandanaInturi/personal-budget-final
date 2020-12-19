@@ -1,7 +1,7 @@
 <nav role="navigation"> <!--This is a semantic change--><!--role attribute is an A11y Change -->
   <ul>
     <li><a [routerLink]="['/']">Home</a></li><!--This is SEO change-->
-    <li><a [routerLink]="['/about']" >About</a></li><!--This is SEO change-->
+    <li><a [routerLink]="['/about']" *ngIf="_userservice.loggedIn()" >Graphs</a></li><!--This is SEO change-->
     <li><a [routerLink]="['/contact']" >Contact</a></li>
     <li><a [routerLink]="['dashboard']" >Dashboard</a></li>
     <li><a [routerLink]="['/login']" rel ="canonical" *ngIf="!_userservice.loggedIn()">Login</a></li><!--This is SEO change-->
