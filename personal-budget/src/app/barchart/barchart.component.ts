@@ -21,11 +21,11 @@ export class BarchartComponent implements OnInit {
   chartData = [
     {
       label: 'Current Budget',
-      data: []  // load budget values
+      data: []
     },
     {
       label: 'Maximum Budget',
-      data: [] // load maximum budget values
+      data: []
     }
   ];
 
@@ -47,8 +47,7 @@ export class BarchartComponent implements OnInit {
   constructor(private http: HttpClient,public Userservice: UserdetailsService) { }
 
   ngOnInit(): void {
-    // Making the subscribe call for the first pie chart. Here the value is fetched from data source.
-    //The data.service file has the handling for the API call.
+
     this.loggedInUserName = this.Userservice.login_user;
     console.log("In barchart component",this.loggedInUserName)
     let user_obj:any={};
@@ -64,16 +63,4 @@ export class BarchartComponent implements OnInit {
 
       }
     });
-    }
-
-
-
-  //   createChart(){
-  //     var ctx : any = document.getElementById("myBar")
-  //     var myBarChart = new Chart(ctx,{
-  //         type: 'bar',
-  //         data : this.dataSource,
-  //     })
-  // }
-
-}
+    }}

@@ -24,6 +24,7 @@ import { BarchartComponent } from './barchart/barchart.component';
 import { ChartsModule } from 'ng2-charts';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PieComponent } from './pie/pie.component';
+import { LineComponent } from './line/line.component';
 
 
 
@@ -46,6 +47,7 @@ import { PieComponent } from './pie/pie.component';
     BarchartComponent,
     DashboardComponent,
     PieComponent,
+    LineComponent,
 
   ],
   imports: [

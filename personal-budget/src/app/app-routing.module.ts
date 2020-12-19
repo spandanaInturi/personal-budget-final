@@ -10,6 +10,7 @@ import { AuthGuard } from './auth.guard';
 import {BarchartComponent} from './barchart/barchart.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PieComponent } from './pie/pie.component';
+import { LineComponent } from './line/line.component';
 
 
 
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: 'barchart',
     component: BarchartComponent,
+
+  },
+  {
+    path: 'lineplot',
+    component: LineComponent,
 
   },
 

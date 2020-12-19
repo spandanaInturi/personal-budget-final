@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Data } from '@angular/router';
-
 import { Chart } from 'chart.js'
 import { UserdetailsService } from '../userdetails.service';
 
 @Component({
-  selector: 'pb-pie',
-  templateUrl: './pie.component.html',
-  styleUrls: ['./pie.component.scss']
+  selector: 'pb-line',
+  templateUrl: './line.component.html',
+  styleUrls: ['./line.component.scss']
 })
-export class PieComponent implements OnInit {
+export class LineComponent implements OnInit {
 
   constructor(public Userservice: UserdetailsService) { }
 
@@ -69,11 +67,12 @@ export class PieComponent implements OnInit {
   }
 
   createChart(){
-    var ctx : any = document.getElementById("Budget_Chart")
+    var ctx : any = document.getElementById("line_Chart")
     var myPieChart = new Chart(ctx,{
-        type: 'pie',
+        type: 'line',
         data : this.dataSource
     })
 }
 
 }
+
