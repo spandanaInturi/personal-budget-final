@@ -22,7 +22,9 @@ import { UserdetailsService } from './userdetails.service';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { BarchartComponent } from './barchart/barchart.component';
 import { ChartsModule } from 'ng2-charts';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PieComponent } from './pie/pie.component';
+
 
 
 
@@ -42,7 +44,9 @@ import { DashboardComponent } from './dashboard/dashboard.component'
     D3graphComponent,
     SignupComponent,
     BarchartComponent,
-    DashboardComponent
+    DashboardComponent,
+    PieComponent,
+
   ],
   imports: [
     BrowserModule,

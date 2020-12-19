@@ -12,20 +12,19 @@ export class UserdetailsService {
   public login_url:string= "http://localhost:1234/login";
   public dashboard_url:string= "http://localhost:1234/dashboard";
   public budget_url:string= "http://localhost:1234/budget_details";
+  public get_budget_url:string= "http://localhost:1234/get_budget_details";
   public login_user: any;
 
   constructor(private httpobject:HttpClient,private _router:Router) { }
 
   public get_userdetails(user:any):Observable<any>{
-    console.log("enteredlogin service");
-    console.log(user)
     this.login_user = user.email;
-    console.log(this.login_user)
     return this.httpobject.post(this.login_url,user)
   }
 
   public post_userdetails(user:any):Observable<any>{
-    console.log("entered service");
+    console.log("entered signmup");
+    this.login_user = user.email;
     return this.httpobject.post(this.register_url,user)
   }
 
@@ -35,8 +34,12 @@ export class UserdetailsService {
   }
 
   public add_budget(user:any):Observable<any>{
-    console.log("budget details");
     return this.httpobject.post(this.budget_url,user)
+  }
+
+  public getBudgetData(user:any):Observable<any>{
+    console.log("get thebudget details",user);
+    return this.httpobject.post(this.get_budget_url,user)
   }
   public loggedIn()
   {

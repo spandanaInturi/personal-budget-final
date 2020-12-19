@@ -1,10 +1,12 @@
-<div class="chart-wrapper">
-  <canvas baseChart
-  [datasets]="barChartData"
-  [labels]="barChartLabels"
-  [options]="barChartOptions"
-  [plugins]="barChartPlugins"
-  [legend]="barChartLegend"
-  [chartType]="barChartType">
-</canvas>
+<div>
+  <canvas
+      baseChart
+      [chartType]="'bar'"
+      [datasets]="chartData"
+      [labels]="labels"
+      [options]="chartOptions"
+      [legend]="true"
+      [colors]="colors"
+      (chartClick)="onChartClick($event)">
+  </canvas>
 </div>

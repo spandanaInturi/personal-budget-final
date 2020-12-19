@@ -21,8 +21,6 @@ export class SignupComponent implements OnInit {
   }
 
   public registerUser() {
-    console.log("hello entered");
-
 
     if(this.password!=this.confirm_password){
       console.log("not valid password")
@@ -32,7 +30,6 @@ export class SignupComponent implements OnInit {
       let user_obj:any={};
       user_obj.email=this.email;
       user_obj.password = this.password;
-      console.log(user_obj)
       this.userservice.post_userdetails(user_obj).subscribe( res => {
         localStorage.setItem('token', res.token)
         this._router.navigate(['/dashboard'])

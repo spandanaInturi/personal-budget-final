@@ -33,15 +33,13 @@ export class DashboardComponent implements OnInit {
 
 
   public addbudget(){
-    console.log("entered dashboard entry")
     let budget_details = {
+    'username': this.userservice.login_user,
     'budget': this.budget,
     'maxbudget':this.maxbudget,
     'title': this.title.charAt(0).toUpperCase()+this.title.slice(1),
     'color':this.randomColorGen(),
-    'username': this.userservice.login_user}
-
-    console.log(budget_details);
+    }
 
     if(!this.budget || !this.maxbudget || !this.title){
       this.invalid_details();
@@ -49,11 +47,8 @@ export class DashboardComponent implements OnInit {
     }
 
     else{
-
       this.userservice.add_budget(budget_details).subscribe((data:any)=>{
-
-        console.log("dasboard budget data",data)
-
+        //this._router.navigate(['/barchart'])
         this._router.navigate(['/dashboard'])
       });
 

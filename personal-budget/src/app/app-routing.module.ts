@@ -9,6 +9,8 @@ import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
 import {BarchartComponent} from './barchart/barchart.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PieComponent } from './pie/pie.component';
+
 
 
 const routes: Routes = [
@@ -44,6 +46,17 @@ const routes: Routes = [
     component: DashboardComponent,
     canActivate: [AuthGuard]
   },
+
+  {
+    path: 'barchart',
+    component: BarchartComponent,
+
+  },
+
+{
+  path: 'pie',
+  component: PieComponent,
+},
 
   {
     path: '**',
